@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class Signin {
+    public static void main(String[] args) {
+        Scanner bscit = new Scanner(System.in);
+        int maxTrial = 3;
+        String correctUsername = "David";
+        String correctPassword = "89112730";
+        int Trial = 1;
+
+        for (int trial = 1; trial <= maxTrial; Trial++) {
+            System.out.print("Enter username: ");
+            String enteredUsername = bscit.nextLine();
+
+            System.out.print("Enter password: ");
+            String enteredPassword = getPasswordInput(bscit);
+
+            if (enteredUsername.equals(correctUsername) && enteredPassword.equals(correctPassword)) {
+                System.out.println("Login successful!");
+                break;
+            } else {
+                System.out.println("Login failed. Please try again. Attempts left: " + (maxTrial - trial));
+            }
+
+            if (trial == maxTrial) {
+                System.out.println("Maximum sign in trials . Account locked.");
+            }
+        }
+
+        bscit.close();
+    }
+
+    private static String getPasswordInput(Scanner bscit) {
+        String password = bscit.nextLine();
+        return password;
+    }
+}
